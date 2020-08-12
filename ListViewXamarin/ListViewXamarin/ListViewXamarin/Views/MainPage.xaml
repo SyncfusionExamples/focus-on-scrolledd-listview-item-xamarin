@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ListViewXamarin"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="ListViewXamarin.MainPage">
+    <ContentPage.BindingContext>
+        <local:ContactsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Behaviors>
+        <local:Behavior/>
+    </ContentPage.Behaviors>
+	 <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="scrollButton" Text="Scroll to the last item"/>
+            <Grid x:Name="mainGrid" Grid.Row="1" Padding="10,25,10,10">
+                <syncfusion:SfListView ItemsSource="{Binding ContactsInfo}" x:Name="listView">
+                    <syncfusion:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Entry x:Name="entry" BackgroundColor="DarkBlue" PlaceholderColor="LightBlue" Placeholder="{Binding ContactName}"/>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
